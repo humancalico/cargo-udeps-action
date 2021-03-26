@@ -6,6 +6,12 @@ branding:
   icon: "alert-triangle"
   color: "orange"
 
+inputs:
+  arguments:
+    description: "The arguments to pass to cargo-udeps"
+    required: false
+    default: "--all-features"
+
 runs:
   using: "docker"
   image: "Dockerfile"
