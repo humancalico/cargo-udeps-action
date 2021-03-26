@@ -1,30 +1,11 @@
-name: "cargo-deny"
-description: "Help manage Cargo crate dependencies and validate licenses"
-author: "Embark Studios"
+name: "cargo-udeps"
+description: "Find unused dependencies in your Rust project"
+author: "Akshat Agarwal <humancalico@disroot.org>"
 
 branding:
-  icon: "slash"
-  color: "red"
-
-inputs:
-  command:
-    description: "The command to run with cargo-deny"
-    required: false
-    default: "check"
-  arguments:
-    description: "The arguments to pass to cargo-deny"
-    required: false
-    default: "--all-features"
-  log-level:
-    description: "The log level for cargo-deny"
-    required: false
-    default: "warn"
+  icon: "alert-triangle"
+  color: "orange"
 
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - --log-level
-    - ${{ inputs.log-level }}
-    - ${{ inputs.arguments }}
-    - ${{ inputs.command }}

@@ -1,5 +1,3 @@
 #!/bin/sh -l
 
-PATH=$PATH:/usr/local/cargo/bin
-
-cargo-deny $*
+cargo +nightly udeps --all --all-targets
