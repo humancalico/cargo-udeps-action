@@ -6,6 +6,9 @@ RUN nix-channel --update
 # Install Rust
 RUN nix-env -iA nixpkgs.rustup
 
+# Install the nightly toolchain
+RUN rustup install nightly --profile=minimal
+
 # Install cargo-udeps
 RUN nix-env -iA nixpkgs.cargo-udeps
 
