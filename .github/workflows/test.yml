@@ -1,4 +1,4 @@
-name: Test
+name: test
 on: [push, pull_request]
 
 jobs:
@@ -8,10 +8,7 @@ jobs:
       - uses: actions/checkout@master
 
       - name: Build Docker image
-        run: docker build -t test-cargo-deny .
+        run: docker build -t test-cargo-udeps .
 
       - name: Run list
-        run: docker run -v ${PWD}/test:/test test-cargo-deny --manifest-path test/Cargo.toml list
-
-      - name: Run check
-        run: docker run -v ${PWD}/test:/test test-cargo-deny --manifest-path test/Cargo.toml --all-features check
+        run: docker run -v ${PWD}/test:/test test-cargo-udeps
