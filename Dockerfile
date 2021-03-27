@@ -1,16 +1,16 @@
-FROM nixos/nix
+FROM ubuntu:20.04
 
-RUN nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-RUN nix-channel --update
+ENV udeps_version="0.1.20"
 
-# Install Rust
-RUN nix-env -iA nixpkgs.rustup
+RUN apt update
 
-# Install the nightly toolchain
-RUN rustup install nightly --profile=minimal
+RUN apt install -y bash curl
+    
+# https://github.com/est31/cargo-udeps/releases/download/v0.1.20/cargo-udeps-v0.1.20-x86_64-unknown-linux-gnu.tar.gz
+RUN curl --silent -L https://github.com/est31/cargo-udeps/releases/download/v$udeps_version/cargo-udeps-v$udeps_version-x86_64-unknown-linux-gnu.tar.gz | tar -xzv -C /usr/bin --strip-components=1;
 
-# Install cargo-udeps
-RUN nix-env -iA nixpkgs.cargo-udeps
+# Ensure rustup is up to date.
+RUN bash -c "sh <(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs) -y"
 
 COPY entrypoint.sh /entrypoint.sh
 
