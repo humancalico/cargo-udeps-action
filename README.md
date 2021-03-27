@@ -1,3 +1,5 @@
+# WARNING: DOES NOT WORK YET
+
 # cargo-udeps GitHub Action
 
 [![Build Status](https://github.com/humancalico/cargo-udeps-action/workflows/Test/badge.svg)](https://github.com/humancalico/cargo-udeps-action/actions?workflow=Test)
