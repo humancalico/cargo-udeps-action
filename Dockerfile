@@ -1,4 +1,4 @@
-FROM rust:1.51.0
+FROM rustlang/rust:nightly
 
 ENV udeps_version="0.1.20"
 
