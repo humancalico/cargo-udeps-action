@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 ENV udeps_version="0.1.20"
 
+RUN set -eax
+
 RUN apt update
 
 RUN apt install -y bash curl
